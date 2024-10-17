@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { WishlistContext } from '../context/WishlistContext';
 import { FaHeart } from 'react-icons/fa';
+import noImage from '../assets/no-image.png';
 
 const WishlistPage = () => {
   const { wishlistedBooks, handleWishlist } = useContext(WishlistContext);
@@ -15,7 +16,7 @@ const WishlistPage = () => {
           {wishlistedBooks?.map((book) => (
             <div key={book?.id} className='relative p-4 border rounded-lg'>
               <img
-                src={book?.formats?.['image/jpeg']}
+                src={book?.formats?.['image/jpeg'] || noImage}
                 alt={book?.title}
                 className='object-cover w-full h-48 mb-2'
               />

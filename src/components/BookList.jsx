@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { WishlistContext } from '../context/WishlistContext';
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import noImage from '../assets/no-image.png';
 
 const BookList = ({ books, isLoading }) => {
   const { wishlistedBooks, handleWishlist } = useContext(WishlistContext);
@@ -17,7 +18,7 @@ const BookList = ({ books, isLoading }) => {
           >
             {/* Book Cover Image */}
             <img
-              src={book.formats?.['image/jpeg']}
+              src={book.formats?.['image/jpeg'] || noImage}
               alt={book.title}
               className='object-cover w-full h-48 mb-2 rounded-md sm:h-56'
             />
@@ -25,15 +26,21 @@ const BookList = ({ books, isLoading }) => {
             <div className='w-full h-[1px] bg-slate-200 my-4'></div>
 
             {/* Book Title and Details */}
-            <h3 className='text-lg font-semibold text-gray-800'>
-              {book.title.length > 40
-                ? `${book.title.substring(0, 40)}...`
-                : book.title}
-            </h3>
-            <p className='text-sm text-gray-600'>
-              By: {book?.authors?.map((author) => author.name).join(', ')}
-            </p>
-            <p className='text-sm text-gray-500'>Genre: {book.subjects?.[0]}</p>
+            <p className='text-sm text-right text-gray-600'>ID: {book?.id}</p>
+            <div className='space-y-2'>
+              <h3 className='text-lg font-semibold text-gray-800'>
+                {book.title.length > 40
+                  ? `${book.title.substring(0, 40)}...`
+                  : book.title}
+              </h3>
+              <p className='text-sm text-gray-600'>
+                <span className='font-bold'>By:</span>{' '}
+                {book?.authors?.map((author) => author.name).join(', ')}
+              </p>
+              <p className='text-sm text-gray-500'>
+                <span className='font-bold'>Genre:</span> {book.subjects?.[0]}
+              </p>
+            </div>
 
             {/* Wishlist Button */}
             <button

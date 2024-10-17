@@ -1,3 +1,5 @@
+import { GrNext, GrPrevious } from 'react-icons/gr';
+
 const Pagination = ({ currentPage, setPage, totalPages }) => {
   const generatePageNumbers = () => {
     const pages = [];
@@ -52,7 +54,7 @@ const Pagination = ({ currentPage, setPage, totalPages }) => {
           currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
         }`}
       >
-        Previous
+        <GrPrevious />
       </button>
 
       {/* Page number buttons */}
@@ -81,7 +83,7 @@ const Pagination = ({ currentPage, setPage, totalPages }) => {
           currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''
         }`}
       >
-        Next
+        <GrNext />
       </button>
     </div>
   );

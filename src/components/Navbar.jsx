@@ -18,7 +18,6 @@ const Navbar = () => {
   return (
     <nav className='fixed top-0 left-0 z-10 w-full bg-slate-800'>
       <div className='container flex items-center justify-between p-4 mx-auto'>
-        {/* Logo or title */}
         <div className='text-lg font-semibold text-white'>
           <Link
             to='/'
