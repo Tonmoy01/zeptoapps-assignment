@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { WishlistContext } from '../context/WishlistContext';
+import { FaHeart } from 'react-icons/fa';
 
 const WishlistPage = () => {
   const { wishlistedBooks, handleWishlist } = useContext(WishlistContext);
-  const placeholderImage = 'https://via.placeholder.com/150';
 
   return (
     <div className='container p-4 mx-auto'>
@@ -13,9 +13,9 @@ const WishlistPage = () => {
       ) : (
         <div className='grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4'>
           {wishlistedBooks?.map((book) => (
-            <div key={book?.id} className='p-4 border rounded-lg'>
+            <div key={book?.id} className='relative p-4 border rounded-lg'>
               <img
-                src={book?.formats?.['image/jpeg'] || placeholderImage}
+                src={book?.formats?.['image/jpeg']}
                 alt={book?.title}
                 className='object-cover w-full h-48 mb-2'
               />
@@ -25,9 +25,9 @@ const WishlistPage = () => {
               </p>
               <button
                 onClick={() => handleWishlist(book)}
-                className='px-2 py-1 mt-2 text-white bg-red-500 rounded'
+                className='absolute p-2 bg-white rounded-full shadow-md top-4 right-4 focus:outline-none'
               >
-                Remove from Wishlist
+                <FaHeart size={24} color='red' />
               </button>
             </div>
           ))}
